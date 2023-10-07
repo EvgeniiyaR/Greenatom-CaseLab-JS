@@ -9,3 +9,5 @@
 * товар удалялся из корзины;
 
 * описать функционал перерасчета общей суммы.
+
+[Ссылка на деплой.](https://evgeniiyar.github.io/Greenatom-CaseLab-JS/vitrina/)
