@@ -4,6 +4,7 @@ const button = document.querySelector('#myBtn');
 const closeModal = (e) => {
   if (e.code === 'Escape') {
     spoiler.classList.add('closed');
+    document.removeEventListener('keydown', closeModal);
   };
 };
 
