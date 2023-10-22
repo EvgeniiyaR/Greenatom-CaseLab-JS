@@ -135,7 +135,8 @@ function createTask(task) {
   list.prepend(li);
 }
 
-getData().then(([dataTodos, dataUsers]) => {
+getData()
+.then(([dataTodos, dataUsers]) => {
   dataUsers && dataUsers.forEach((user) => createUser(user));
   dataTodos && dataTodos.forEach((task) => createTask(task));
 })
@@ -144,7 +145,8 @@ getData().then(([dataTodos, dataUsers]) => {
 function handleChange(event) {
   const checked = event.target.checked;
   event.target.checked = !checked;
-  updateTask(Number(event.target.parentElement.dataset.id), checked).then((res) => {
+  updateTask(Number(event.target.parentElement.dataset.id), checked)
+  .then((res) => {
     event.target.checked = res.completed;
     const textTask = event.target.parentElement.querySelector('p');
     if (res.completed) {
@@ -157,7 +159,8 @@ function handleChange(event) {
 }
 
 function handleDelete(event) {
-  deleteTask(event.target.parentElement.dataset.id).then(() => {
+  deleteTask(event.target.parentElement.dataset.id)
+  .then(() => {
     list.removeChild(event.target.parentElement);
   })
   .catch((error) => alert(error));
