@@ -5,25 +5,33 @@ const select = document.querySelector('#user-todo');
 const list = document.querySelector('#todo-list');
 const form = document.querySelector('form');
 
-// "userId": 7,
-// "title": "qui sit non",
-// "completed": false
-
 async function getTodos() {
   try {
+    if (!navigator.onLine) {
+      throw new Error('Отсутствует интернет-соединение');
+    }
     const response = await fetch(URL_TODO);
-    return response.json();
+    if (!response.ok) {
+      throw new Error(`Код ошибки ${response.status}`);
+    }
+    return await response.json();
   } catch (error) {
-    throw new Error(alert("Ошибка: " + error));
+    throw error;
   }
 }
 
 async function getUsers() {
   try {
+    if (!navigator.onLine) {
+      throw new Error('Отсутствует интернет-соединение');
+    }
     const response = await fetch(URL_USER);
-    return response.json();
+    if (!response.ok) {
+      throw new Error(`Код ошибки ${response.status}`);
+    }
+    return await response.json();
   } catch (error) {
-    throw new Error(alert("Ошибка: " + error));
+    throw error;
   }
 }
 
@@ -31,12 +39,15 @@ async function getData() {
   try {
     return await Promise.all([getTodos(), getUsers()]);
   } catch (error) {
-    throw new Error(alert("Ошибка: " + error));
+    throw error;
   }
 }
 
 async function postTask(task) {
   try {
+    if (!navigator.onLine) {
+      throw new Error('Отсутствует интернет-соединение');
+    }
     const response = await fetch(URL_TODO, {
       method: 'POST',
       headers: {
@@ -44,37 +55,52 @@ async function postTask(task) {
       },
       body: JSON.stringify(task),
     });
-    return response.json();
+    if (!response.ok) {
+      throw new Error(`Код ошибки ${response.status}`);
+    }
+    return await response.json();
   } catch (error) {
-    throw new Error(alert("Ошибка: " + error));
+    throw error;
   }
 }
 
-async function updateTask(idTask, IsCompleted) {
+async function updateTask(idTask, isCompleted) {
   try {
+    if (!navigator.onLine) {
+      throw new Error('Отсутствует интернет-соединение');
+    }
     const response = await fetch(`${URL_TODO}/${idTask}`, {
       method: 'PATCH',
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
       body: JSON.stringify({
-        completed: IsCompleted,
+        completed: isCompleted,
       })
     });
-    return response.json();
+    if (!response.ok) {
+      throw new Error(`Код ошибки ${response.status}`);
+    }
+    return await response.json();
   } catch (error) {
-    throw new Error(alert("Ошибка: " + error));
+    throw error;
   }
 }
 
 async function deleteTask(idTask) {
   try {
+    if (!navigator.onLine) {
+      throw new Error('Отсутствует интернет-соединение');
+    }
     const response = await fetch(`${URL_TODO}/${idTask}`, {
       method: 'DELETE',
     });
-    return response.json();
+    if (!response.ok) {
+      throw new Error(`Код ошибки ${response.status}`);
+    }
+    return await response.json();
   } catch (error) {
-    throw new Error(alert("Ошибка: " + error));
+    throw error;
   }
 }
 
@@ -112,7 +138,8 @@ function createTask(task) {
 getData().then(([dataTodos, dataUsers]) => {
   dataUsers && dataUsers.forEach((user) => createUser(user));
   dataTodos && dataTodos.forEach((task) => createTask(task));
-}).catch((error) => alert("Ошибка: " + error));
+})
+.catch((error) => alert(error));
 
 function handleChange(event) {
   const checked = event.target.checked;
@@ -125,25 +152,35 @@ function handleChange(event) {
     } else {
       textTask.classList.remove('completed');
     }
-  }).catch((error) => alert("Ошибка: " + error));
+  })
+  .catch((error) => alert(error));
 }
 
 function handleDelete(event) {
   deleteTask(event.target.parentElement.dataset.id).then(() => {
     list.removeChild(event.target.parentElement);
-  }).catch((error) => alert("Ошибка: " + error));
+  })
+  .catch((error) => alert(error));
 }
 
 function handleSubmit(event) {
   event.preventDefault();
-  postTask({
-    userId: Number(event.target.elements.user.value),
-    title: event.target.elements.todo.value,
-    completed: false,
-  }).then((res) => {
-    createTask(res);
-    form.reset();
-  }).catch((error) => alert("Ошибка: " + error));
+  const userValue = Number(event.target.elements.user.value);
+  const todoValue = event.target.elements.todo.value;
+  if (!isNaN(userValue) && todoValue) {
+    postTask({
+      userId: userValue,
+      title: todoValue,
+      completed: false,
+    })
+    .then((res) => {
+      createTask(res);
+      form.reset();
+    })
+    .catch((error) => alert(error));
+  } else {
+    alert('Напишите задачу и выберите пользователя');
+  }
 }
 
 form.addEventListener('submit', handleSubmit);
