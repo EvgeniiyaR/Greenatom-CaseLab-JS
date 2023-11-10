@@ -1,7 +1,17 @@
 import React from "react";
 import { CurrencyLabel } from "@skbkontur/react-ui";
+import { Vehicle, vehicleTypeTitles } from "../data/vehicles/contracts";
 
-const TableItem: React.FC = ({ vehicle, number }) => {
+interface ITableItemProps {
+    vehicle: Vehicle;
+    number: number;
+}
+
+interface ITableItemsProps {
+    vehicles: Vehicle[];
+}
+
+const TableItem: React.FC<ITableItemProps> = ({ vehicle, number }) => {
     return (
         <tr>
             <td>{number}</td>
@@ -9,11 +19,12 @@ const TableItem: React.FC = ({ vehicle, number }) => {
             <td>
                 <CurrencyLabel value={vehicle.price} fractionDigits={2} />
             </td>
+            <td>{vehicleTypeTitles[vehicle.type]}</td>
         </tr>
     );
 };
 
-export const Table: React.FC = ({ vehicles }) => {
+export const Table: React.FC<ITableItemsProps> = ({ vehicles }) => {
     return (
         <table>
             <thead>
@@ -21,6 +32,7 @@ export const Table: React.FC = ({ vehicles }) => {
                 <th>#</th>
                 <th>Название</th>
                 <th>Цена, ₽</th>
+                <th>Тип ТС</th>
             </tr>
             </thead>
             <tbody>
