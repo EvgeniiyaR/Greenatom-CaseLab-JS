@@ -1,7 +1,7 @@
 import React from "react";
 
-export class Filter extends React.Component {
-    render(): React.ReactNode {
-        return <div/>;
-    }
-}
+export const Filter: React.FC = () => {
+    return (
+        <></>
+    );
+};
