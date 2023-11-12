@@ -36,9 +36,16 @@ export const Table: React.FC<ITableItemsProps> = ({ vehicles }) => {
             </tr>
             </thead>
             <tbody>
-            {vehicles.map((x, i) => (
-                <TableItem key={x.id} number={i + 1} vehicle={x} />
-            ))}
+            {vehicles.length > 0 ? (
+                vehicles.map((x, i) => (
+                    <TableItem key={x.id} number={i + 1} vehicle={x} />
+                ))
+                )
+                :
+                <tr>
+                    <td colSpan={4} align="center">Нет результатов поиска</td>
+                </tr>
+            }
             </tbody>
         </table>
     );
