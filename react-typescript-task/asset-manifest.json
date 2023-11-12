@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.js": "/static/js/main.f43f99e3.chunk.js",
+    "main.js.map": "/static/js/main.f43f99e3.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.47d1f893.js",
+    "runtime-main.js.map": "/static/js/runtime-main.47d1f893.js.map",
+    "static/js/2.65605d9e.chunk.js": "/static/js/2.65605d9e.chunk.js",
+    "static/js/2.65605d9e.chunk.js.map": "/static/js/2.65605d9e.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.b6bb64f884301dff18f26a601020d6a9.js": "/precache-manifest.b6bb64f884301dff18f26a601020d6a9.js",
+    "service-worker.js": "/service-worker.js",
+    "static/js/2.65605d9e.chunk.js.LICENSE.txt": "/static/js/2.65605d9e.chunk.js.LICENSE.txt",
+    "static/media/Kontur-Iconic-eco-20px.woff2": "/static/media/Kontur-Iconic-eco-20px.98878a7f.woff2",
+    "static/media/Kontur-Iconic-eco-20px.eot": "/static/media/Kontur-Iconic-eco-20px.b811ce6c.eot",
+    "static/media/Kontur-Iconic-eco-20px.woff": "/static/media/Kontur-Iconic-eco-20px.cc8e65cb.woff",
+    "static/media/fallback_circle.png": "/static/media/fallback_circle.7d850235.png",
+    "static/media/fallback_circle_big.png": "/static/media/fallback_circle_big.7890347b.png",
+    "static/media/fallback_circle_normal.png": "/static/media/fallback_circle_normal.dae3133e.png",
+    "static/media/font.woff2": "/static/media/font.7b359e7d.woff2",
+    "static/media/font.eot": "/static/media/font.dc62e0fc.eot",
+    "static/media/font.woff": "/static/media/font.f01e8d15.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.47d1f893.js",
+    "static/js/2.65605d9e.chunk.js",
+    "static/js/main.f43f99e3.chunk.js"
+  ]
+}
