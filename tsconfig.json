@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "paths": {"*": ["*"]},
+        "target": "ES5" /*SpecifyECMAScripttargetversion:'ES3'(default),'ES5','ES2015','ES2016','ES2017','ES2018','ES2019','ES2020',or'ESNEXT'.*/,
+        "module": "ESNext" /*Specifymodulecodegeneration:'none','commonjs','amd','system','umd','es2015','es2020',or'ESNext'.*/,
+        "moduleResolution": "node" /*Specifymoduleresolutionstrategy:'node'(Node.js)or'classic'(TypeScriptpre-1.6).*//*Typedeclarationfilestobeincludedincompilation.*/,
+        "lib": ["DOM","ESNext"] /*Specifylibraryfilestobeincludedinthecompilation.*/,
+        "jsx": "react-jsx" /*SpecifyJSXcodegeneration:'preserve','react-native','react'or'react-jsx'.*/,
+        "noEmit": true/*Donotemitoutputs.*/,
+        "isolatedModules": true /*Transpileeachfileasaseparatemodule(similarto'ts.transpileModule').*/,
+        "esModuleInterop": true/*EnablesemitinteroperabilitybetweenCommonJSandESModulesviacreationofnamespaceobjectsforallimports.Implies'allowSyntheticDefaultImports'.*/,
+        "strict": true/*Enableallstricttype-checkingoptions.*/,
+        "skipLibCheck": true/*Skiptypecheckingofdeclarationfiles.*/,
+        "forceConsistentCasingInFileNames": true/*Disallowinconsistently-casedreferencestothesamefile.*/,
+        "resolveJsonModule": true//"allowJs":true/*Allowjavascriptfilestobecompiled.UsefulwhenmigratingJStoTS*/,//"checkJs":true/*Reporterrorsin.jsfiles.WorksintandemwithallowJs.*/,
+    },
+    "include": ["src/**/*"]
+}
